@@ -59,3 +59,7 @@ ancestor(X,Z):-
 ancestor(X,Z):-
     parent(X,Y1),
     ancestor(Y1,Z).
+
+
+1.7
+
