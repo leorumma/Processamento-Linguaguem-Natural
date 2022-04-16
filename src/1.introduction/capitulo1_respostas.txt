@@ -1,0 +1,54 @@
+----- Seção 1 ---
+1.1
+a) parent(jim,X). %falso
+b) parent(X,jim). % pat
+c) parent(pam,X),parent(X,pat). % bob
+d) parent(pam,X),parent(X,Y),parent(Y,jim).
+	%X = bob,
+	%Y = pat.
+
+1.2
+a) parent(X,pat).
+	%X = bob
+b) parent(liz,Y).
+	%false
+c) parent(X,pat),parent(Y,X).
+	X = bob,
+	Y = pam ;
+	X = bob,
+	Y = tom.
+
+--- Seção 2 ----
+1.3
+a) 
+hasachild(X):-
+    parent(X,Y).
+
+happy(X):-
+    hasachild(X).
+
+b)
+hastwochildren(X):-
+    parent(X,Y),
+    sister(Z,Y).
+
+1.4
+grandchild(X,Z):-
+    parent(Y,X),
+    parent(Z,Y).    
+
+1.5
+%tentativa 1, não da certo
+%Quando o avo tem duas filhas meninas, então.
+%A mãe é confundida como tia.
+%Olhar se o avo tem filha menina não é boa ideia
+aunt_tentativa1(TIA,SOBRINHO):-
+    parent(PAI_SOBRINHO,SOBRINHO),
+    parent(AVO_SOBRINHO,PAI_SOBRINHO),
+    parent(AVO_SOBRINHO,TIA),
+    female(TIA).
+
+aunt(TIA,SOBRINHO):-
+    parent(PAI_SOBRINHO,SOBRINHO),
+    sister(TIA,PAI_SOBRINHO).
+
