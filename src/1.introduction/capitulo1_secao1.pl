@@ -58,3 +58,10 @@ aunt_tentativa1(TIA,SOBRINHO):-
 aunt(TIA,SOBRINHO):-
     parent(PAI_SOBRINHO,SOBRINHO),
     sister(TIA,PAI_SOBRINHO).
+
+ancestor(X,Z):-
+    parent(X,Z).
+
+ancestor(X,Z):-
+    parent(X,Y1),
+    ancestor(Y1,Z).
